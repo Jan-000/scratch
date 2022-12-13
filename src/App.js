@@ -4,6 +4,7 @@ import Search from "./pages/Search"
 import Create from "./pages/Create"
 import TodoList from "./TodoList"
 import Ridetail from "./pages/Ridetail"
+import Todo from "./pages/Todo"
 
 import React from 'react';
 import { Route, Routes } from "react-router-dom"
@@ -18,13 +19,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/create" element={<Create />} />
-          <Route path="/todolist" element={<TodoList />} />
-          <Route path="/create/:id" element={<Ridetail />} />
+         
+          <Route path="/create/:id" element={<Ridetail todo={Todo} />} />
         </Routes>
       </div>
 
 
-    <p>All due credit to WebDevSimplified on which I based this app.</p>
+    <h6>All due credit to WebDevSimplified on which I based this app.</h6>
 
 
     </>

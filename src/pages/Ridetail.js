@@ -1,25 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Route, useMatch, useParams } from "react-router-dom";
-
+import TodoList from "../TodoList";
+import Todo from "./Todo";
+//import LOCAL_STORAGE_KEY from "../App"
+const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
 
 export default function Ridetail()
 {
   //GetId()
   const { id } = useParams();
-  console.log("de profondis", id);
-  // const { path } = useMatch();
+  let todos
 
+  const data =  JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+  // });
+  console.log("dyx local", data)
+  console.log("id is", id)
+
+  const item = data.find(x => x.id === id);
+  //console.log("voila", item)
+  // const { path } = useMatch();
+//console.log("hir todos", todos)
   // const { url } = useMatch();
   // const history = useNavigate();
-//console.log("i readx", { id })
+
+  const {toStation, fromStation} = item
+
+
   return (
     <div >
       <div>
         <h1>essa</h1>
-        <h3>ID: </h3>  
-        { id }
-        LOLLO
+        <h5>travel ID: { id } </h5>  
+        
+        <div>Train from : {fromStation}</div>
+        <div>to : {toStation}</div>
+         {/* <Todo key={todo.id} todo={todo}/>  */}
+         {/* <TodoList todos={todos}/> */}
+<div>tu sie koncza todosi</div>
       </div>
     </div>
   );

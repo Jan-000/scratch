@@ -12,7 +12,7 @@ export default function TodoList({ todos }) {
         <li key={todo.id}>
 
 <Todo key={todo.id} todo={todo} />
-<Link to={todo.id}>Ridetail</Link>
+<Link to={todo.id} todo={todo}>Ridetail</Link>
         </li>
         )) }
         </ul>

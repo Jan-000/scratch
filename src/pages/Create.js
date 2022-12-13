@@ -7,27 +7,30 @@ import React, { useState, useRef, useEffect } from 'react';
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
 export default function Create() {
-  const [todos, setTodos] = useState([])
+
+
+  //console.log("yx", localStorage)
+  
+  const [todos, setTodos] = useState(() => {
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || []
+  });
+
   const todoNameRef = useRef()
   const todoNameRef2 = useRef()
 
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
-    if (storedTodos) setTodos(storedTodos)
-  }, [])
+  
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
   }, [todos])
 
   
-
   function handleAddRide(e) {
     const fromStation = todoNameRef.current.value
     const toStation = todoNameRef2.current.value
     if (fromStation === ''&&toStation === '') return
     setTodos(prevTodos => {
-      return [...prevTodos, { id: uuidv4(), fromStation: fromStation, toStation: toStation, complete: false}]
+      return [...prevTodos, { id: uuidv4(), fromStation: fromStation, toStation: toStation}]
     })
     todoNameRef.current.value = null
     todoNameRef2.current.value = null
