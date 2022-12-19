@@ -1,32 +1,45 @@
-import React, { useRef } from 'react';
-
-
+import React, { useEffect, useRef, useState } from "react";
+const LOCAL_STORAGE_KEY = "todoApp.todos";
 
 export default function Search() {
+  const [searchResult, setSearchResult] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const todoNameRef = useRef()
-  const todoNameRef2 = useRef()
+  const datax = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
+  // console.log("erstmal luk hir", datax)
+  // console.log("luk hir", datax[1].id)
 
-    return (
+  function handleChange(e) {
+    setSearchTerm(e.target.value);
+  }
+
+  useEffect(() => {
+    const result = datax.filter(
+      (o) =>
+        o.fromStation.includes(searchTerm) || o.toStation.includes(searchTerm)
+    );
+   
+      setSearchResult(result);
+      console.log("masz", searchResult);
+    }, [searchTerm]);
+
+  return (
     <>
-    <h1>Search ride</h1>
-    
-     <input value="from"
-      ref={todoNameRef}
-     type="text" />
+      <h1>Search ride</h1>
 
-      <input value="to"
-       ref={todoNameRef2}
-      type="text" />
+      <input onChange={handleChange} value={searchTerm} type="text" />
+
       <br />
 
-      <button
-       
-      >Find</button>
-      </>
-      
-      
-      )
-  }
-  
+      <div>
+        <ul>
+          {searchResult.map((item) => (
+            <li>{item.fromStation}, {item.toStation}</li>
+          ))}
+
+        </ul>
+      </div>
+    </>
+  );
+}
