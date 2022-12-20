@@ -6,7 +6,7 @@ export default function Todo({ todo }) {
   
   return (
     <div>
-        <strong>from:</strong> {todo.fromStation} → <strong>to:</strong> {todo.toStation} todopage
+        <strong>from:</strong> {todo.fromStation} → <strong>to:</strong> {todo.toStation}
         
     </div>
   )
