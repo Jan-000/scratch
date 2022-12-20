@@ -30,14 +30,14 @@ export default function Ridetail()
   return (
     <div >
       <div>
-        <h1>essa</h1>
-        <h5>travel ID: { id } </h5>  
+        <h1>Ride details: </h1>
+          
         
-        <div>Train from : {fromStation}</div>
-        <div>to : {toStation}</div>
+        <div><strong>Train from:</strong> {fromStation}</div>
+        <div><strong>to:</strong> {toStation}</div>
          {/* <Todo key={todo.id} todo={todo}/>  */}
          {/* <TodoList todos={todos}/> */}
-<div>tu sie koncza todosi</div>
+         <small><small>travel ID: { id } </small></small>
       </div>
     </div>
   );

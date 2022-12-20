@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 const LOCAL_STORAGE_KEY = "todoApp.todos";
 
 export default function Search() {
@@ -19,10 +20,10 @@ export default function Search() {
       (o) =>
         o.fromStation.includes(searchTerm) || o.toStation.includes(searchTerm)
     );
-   
-      setSearchResult(result);
-      console.log("masz", searchResult);
-    }, [searchTerm]);
+
+    setSearchResult(result);
+    console.log("masz", searchResult);
+  }, [searchTerm]);
 
   return (
     <>
@@ -35,9 +36,12 @@ export default function Search() {
       <div>
         <ul>
           {searchResult.map((item) => (
-            <li>{item.fromStation}, {item.toStation}</li>
+            <li>
+              <Link to={item.id} todo={item}>
+                {item.fromStation} → {item.toStation}
+              </Link>
+            </li>
           ))}
-
         </ul>
       </div>
     </>

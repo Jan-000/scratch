@@ -21,10 +21,11 @@ function App() {
           <Route path="/create" element={<Create />} />
          
           <Route path="/create/:id" element={<Ridetail todo={Todo} />} />
+          <Route path="/search/:id" element={<Ridetail todo={Todo} />} />
         </Routes>
       </div>
 
-
+<br></br>
     <h6>All due credit to WebDevSimplified on which I based this app.</h6>
 
 
